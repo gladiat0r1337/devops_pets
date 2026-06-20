@@ -1,0 +1,42 @@
+name: Deploy static page
+
+on:
+    push:
+        branches: ["main"]
+        paths: 
+            - 'index.html'
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              
+            - name: Setup GitHub Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: ' . '
+
+    deploy:
+        environment:
+            name: github-actions
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        runs-on: ubunti-latest
+        needs: build
+
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
+
+
