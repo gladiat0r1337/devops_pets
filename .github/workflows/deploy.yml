@@ -5,6 +5,7 @@ on:
         branches: ["main"]
         paths: 
             - 'gh-deployment/index.html'
+            - '.github/workflows/deploy.yml'
 
 permissions:
     contents: read
@@ -24,7 +25,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                path: ' . '
+                path: ' ./gh-deployment '
 
     deploy:
         environment:
