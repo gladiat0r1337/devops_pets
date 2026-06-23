@@ -1,0 +1,25 @@
+        body {
+            background-color: #0c0c0c; 
+            color: #ffffff;            
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 15px;            
+            height: 100vh;
+            box-sizing: border-box;
+            line-height: 1.6;         
+        }
+        
+
+        .success {
+            color: #00ff00; 
+        }
+
+        /* Стиль для мигающего курсора */
+        .cursor {
+            font-weight: bold;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
